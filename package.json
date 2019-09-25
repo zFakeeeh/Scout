@@ -1,0 +1,17 @@
+{
+  "name": "scout",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "!ping"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "enmap": "^5.1.2",
+    "moment": "^2.24.0",
+    "superagent": "^5.1.0"
+  }
+}
