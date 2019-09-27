@@ -33,7 +33,10 @@ module.exports.run = async (bot, message, args) => {
         .setThumbnail(bot.user.displayAvatarURL)
         .setTimestamp()
         .setDescription(`⚙ Estes são os comandos disponíveis do bot!\n 🎤 O prefixo do bot é: ${prefix}`)
-        .addField(`⌨ Comandos :`, " ``ban,botinfo,help,kick,ping,reload,report,serverinfo,userinfo`` ")
+        .addField(`⌨ Geral :`, " ``botinfo,help,ping,serverinfo,userinfo`` ")
+        .addField(`👮 Administrator  :`, " ``ban,kick,limpar,reload`` ")
+        .addField(`🎈 Diversão :`, " ``kiss`` ")
+        .addField(`🎉 Outros  :`, " ``report,uptime`` ")
         .setFooter("Bot Suporte Iron Man 2019", bot.user.displayAvatarURL)
         message.channel.send(embed).then(m => m.delete(10000));
         message.author.send(Sembed)

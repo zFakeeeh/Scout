@@ -18,5 +18,5 @@ module.exports = async (client, member) => {
 		}
 	  ]
 	};
-	member.guild.channels.find("name","geral").send({embed});
+	member.guild.channels.find("name","entrada").send({embed});
 }
