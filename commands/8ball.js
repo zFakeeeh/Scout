@@ -1,10 +1,10 @@
 const Discord = module.require('discord.js');
 
 var fortunes = [
-    "sim",
-    "não",
-    "talvez",
-    "não entendi, tente novamente"
+    "Sim",
+    "Não",
+    "Talvez",
+    "Não entendi, tente novamente"
 ];
 
 

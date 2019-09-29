@@ -20,7 +20,7 @@ module.exports.run = async (bot, message, args) => {
 
    🚫 Você foi banido do server: ${message.guild.name}
    
-   👮 Por: ${banMember.user.username}
+   👮 Por: ${message.author.username}
    
    💭 Motivo:  ${reason}**`).then(() =>
    message.guild.ban(banMember, { days: 1, reason: reason})).catch(err => console.log(err))
