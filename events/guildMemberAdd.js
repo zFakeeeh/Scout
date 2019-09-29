@@ -14,7 +14,7 @@ module.exports = async (client, member) => {
 	  "fields": [
 		{
 		  "name": "Bem vindo(a)",
-		  "value": "Leia as regras para não tomar KICK/BAN e mantenha um bom relacionamento com o pessoal :sunglasses: "
+		  "value": "Leia as regras para não tomar KICK/BAN e mantenha um bom relacionamento com o pessoal  "
 		}
 	  ]
 	};

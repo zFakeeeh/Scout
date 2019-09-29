@@ -1,17 +1,25 @@
-exports.run = (client, message, args) => {
-    if (!args || args.length < 1)
-      return message.reply("⚠️ Escreva o comando que deseja dar reload!");
-  
-      const commandName = args[0];
-  
-      if(!client.commands.has(commandName)) {
-        return message.reply("⚠️ Comando inexistente!");
-      }
-  
-      delete require.cache[require.resolve(`./${commandName}.js`)];
-  
-      client.commands.delete(commandName);
-      const props = require(`./${commandName}.js`);
-      client.commands.set(commandName, props);
-      message.reply(`✔️ O comando ${commandName} foi recarregado com sucesso!`);
-  };
+const Discord = require("discord.js");
+var moment = require('moment');
+moment.locale('pt-BR');
+const fs = require("fs")
+exports.run = (bot, message, args) => {
+	let argsJunto = message.content.split(" ").slice(1).join(' ')
+	if(message.author.id === '387700259171729419') {
+    if(argsJunto.length < 1) {
+    	message.channel.sendMessage(` | Diga um comando para ser resetado.`); 
+    } else {
+    	delete require.cache[require.resolve(`./${args[0]}.js`)];
+    	message.channel.sendMessage('| O comando `' + argsJunto + '` foi resetado.'); 
+    }
+  // the path is relative to the *current folder*, so just ./filename.js
+} else {
+  	message.channel.sendMessage('| Você não tem permissão para executar este comando, apenas o dono pode usa-lo.')
+  }
+}
+module.exports.config = {
+    name: "reload",
+    description: "aaa",
+    usage: "*reload",
+    accessableby: "Administrator",
+    aliases: ["ava"]
+}

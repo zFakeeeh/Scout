@@ -14,7 +14,7 @@ module.exports.run = async (bot, message, args) => {
             command = bot.commands.get(command);
             var SHembed = new Discord.RichEmbed()
             .setColor(colours.cyan)
-            .setAuthor(`Iron Man ajuda`, message.guild.iconURL)
+            .setAuthor(`Poc Poc ajuda`, message.guild.iconURL)
             .setThumbnail(bot.user.displayAvatarURL)
             .setDescription(`O prefixo do bot é: ${prefix}\n\n**Comando:** ${command.config.name}\n**Description:** ${command.config.description || "No Description"}\n**Usage:** ${command.config.usage || "No Usage"}\n**Accessable by:** ${command.config.accessableby || "Members"}\n**Aliases:** ${command.config.noalias || command.config.aliases}`)
             message.channel.send(SHembed);
@@ -25,19 +25,20 @@ module.exports.run = async (bot, message, args) => {
         let embed = new Discord.RichEmbed()
         .setAuthor(`Comando de Ajuda!`, message.guild.iconURL)
         .setColor(colours.redlight)
-        .setDescription(`${message.author.username} Veja seu privado, mandei para você as informações!`)
+        .setDescription(`${message.author.username} Veja seu privado!`)
 
         let Sembed = new Discord.RichEmbed()
         .setColor(colours.cyan)
-        .setAuthor(`Bot Suporte Iron Man`, message.guild.iconURL)
+        .setAuthor(`Bot Suporte `, message.guild.iconURL)
         .setThumbnail(bot.user.displayAvatarURL)
         .setTimestamp()
         .setDescription(`⚙ Estes são os comandos disponíveis do bot!\n 🎤 O prefixo do bot é: ${prefix}`)
-        .addField(`⌨ Geral :`, " ``botinfo,help,ping,serverinfo,userinfo`` ")
-        .addField(`👮 Administrator  :`, " ``ban,kick,limpar,reload`` ")
-        .addField(`🎈 Diversão :`, " ``kiss`` ")
-        .addField(`🎉 Outros  :`, " ``report,uptime`` ")
-        .setFooter("Bot Suporte Iron Man 2019", bot.user.displayAvatarURL)
+        .addField(`⌨ Geral :`, " `avatar,botinfo,help,ping,regras,report,roles,serverinfo,userinfo` ")
+        .addField(`🎈 Diversão:`, " `8ball,cat,kiss,hug,dog,fish` ")
+        .addField(`👮 Administrador:`, " `addrole,ban,kick,limpar,mute,removerole,sorteio,votação,reload,` ")
+        .addField(`🔧 Utilitários:`, " `invite,say,suporte,remind,clima` ")
+        .addField(`👿 NSFW:`, " `pussy,ass,anal,gif,hentai,holo` ")
+        .setFooter("Bot Suporte 2019", bot.user.displayAvatarURL)
         message.channel.send(embed).then(m => m.delete(10000));
         message.author.send(Sembed)
     }

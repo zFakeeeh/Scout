@@ -27,7 +27,7 @@ module.exports.run = async (bot, message, args) => {
 module.exports.config = {
     name: "report",
     description: "reports a user of the guild",
-    usage: "!report <user> <reason>",
+    usage: "*report <user> <reason>",
     accessableby: "Members",
     aliases: ["reportar"]
 }

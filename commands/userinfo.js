@@ -7,7 +7,7 @@ exports.run = (bot, message, args) => {
     let argsJunto = message.content.split(" ").slice(1).join(' ')
     	    let user = message.mentions.users.first();
         if (message.mentions.users.first() === undefined) {
-            message.channel.sendMessage('<:vpRedTick:257437215615877129> | O usuário mencionado não foi reconhecido pelo bot, ou você não mencionou ninguém.').then(message => {
+            message.channel.sendMessage(' | O usuário mencionado não foi reconhecido pelo bot, ou você não mencionou ninguém.').then(message => {
                             	setTimeout(() => {message.delete()}, 5000)
                             })
         } else {
@@ -44,4 +44,11 @@ exports.run = (bot, message, args) => {
                 message.channel.sendMessage(':warning: | Eu não tenho a permissão `EMBED_LINKS` neste servidor. O resultado foi enviado por privado.');
             }
         }
+}
+module.exports.config = {
+    name: "userinfo",
+    description: "Descubra tudo sobre um usuário!",
+    usage: "-userinfo (@mention)",
+    accessableby: "Members",
+    aliases: ["ui"]
 }

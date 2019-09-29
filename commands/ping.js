@@ -1,13 +1,26 @@
-exports.run = async (client, message) => {
-    const ms = await message.channel.send("Ping?");
-	const clientms = ms.createdTimestamp - message.createdTimestamp;
-	ms.edit('📡 Seu ping é: ' + clientms + 'ms / 🖥 Ping do bot com Server:' + Math.round(client.ping) + 'ms');
+const Discord = require("discord.js")
 
-	const embed = new Discord.RichEmbed()
-.setColor(0x00A2E8)
-.addField("Seu ping é de:",  + clientms)
-.setFooter("O ping do bot com o server é:", Math.round(clientping) + 'ms' )
-.setTimestamp()
- message.channel.send({embed}).then(m => {
-   })
+
+module.exports.run = async (bot, message, args) => {
+
+    message.channel.send("Ping?...").then(m => {
+        let ping = m.createdTimestamp - message.createdTimestamp
+        let choices = ["Is this really my ping", "Is it okay? I cant look", "I hope it isnt bad"]
+        let response = choices[Math.floor(Math.random() * choices.length)]
+
+        m.edit(`
+        :ping_pong: **| ${message.author} Pong!**
+        :satellite: **| A sua latencia é ** ${m.createdTimestamp - message.createdTimestamp}ms.
+        :stopwatch: **| A Latencia do BOT é** ${Math.round(bot.ping)}ms\´`)
+    })
+
+}
+
+
+module.exports.config = {
+    name: "ping",
+    description: "PONG! Displays the api & bot latency",
+    usage: "!ping",
+    accessableby: "Members",
+    aliases: ["latency"]
 }

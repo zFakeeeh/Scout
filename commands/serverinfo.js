@@ -41,3 +41,10 @@ exports.run = (bot, message, args) => {
             }
         }
 }
+module.exports.config = {
+    name: "serverinfo",
+    description: " a member in the discord!",
+    usage: "*serverinfo",
+    accessableby: "Members",
+    aliases: ["ava"]
+}

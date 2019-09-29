@@ -6,26 +6,26 @@ const superagent = require("superagent")
 
 module.exports.run = async (bot, message, args) => {
 
-   if(!message.member.hasPermission(["BAN_MEMBERS", "ADMINISTRATOR"])) return message.channel.send(" | **Você não tem permissão para utilizar este comando!**")
+   if(!message.member.hasPermission(["BAN_MEMBERS", "ADMINISTRATOR"])) return message.channel.send("| **Você não tem permissão para utilizar este comando!**")
 
    let banMember = message.mentions.members.first() || message.guild.members.get(args[0]) 
-   if(!banMember) return message.channel.send("| **Por favor, forneça um usuário para banir!**")
+   if(!banMember) return message.channel.send(" | **Por favor, forneça um usuário para banir!**")
 
    let reason = args.slice(1).join(" ");
    if(!reason) reason = "Nenhuma razão foi dita!"
 
-   if(!message.guild.me.hasPermission(["BAN_MEMBERS", "ADMINISTRATOR"])) return message.channel.send(" | **Eu não tenho permissão para poder banir este usuário**")
+   if(!message.guild.me.hasPermission(["BAN_MEMBERS", "ADMINISTRATOR"])) return message.channel.send("| **Eu não tenho permissão para poder banir este usuário**")
 
    banMember.send(`**🤖 Hey
 
    🚫 Você foi banido do server: ${message.guild.name}
    
-   👮 Por: ${message.user.username}
+   👮 Por: ${banMember.user.username}
    
    💭 Motivo:  ${reason}**`).then(() =>
    message.guild.ban(banMember, { days: 1, reason: reason})).catch(err => console.log(err))
 
-   message.channel.send(` | **${banMember.user.tag} foi banido deste  servidor**`).then(m => m.delete(5000))
+   message.channel.send(`| **${banMember.user.tag} foi banido deste  servidor**`).then(m => m.delete(5000))
 
     let embed = new Discord.RichEmbed()
     .setColor(colours.redlight)
