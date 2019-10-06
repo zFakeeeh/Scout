@@ -25,7 +25,7 @@ module.exports.run = async (bot, message, args) => {
         let embed = new Discord.RichEmbed()
         .setAuthor(`Comando de Ajuda!`, message.guild.iconURL)
         .setColor(colours.redlight)
-        .setDescription(`${message.author.username} Veja seu privado!`)
+        .setDescription(`${message.author.username} Veja seu privado, mandei a você as informações!`)
 
         let Sembed = new Discord.RichEmbed()
         .setColor(colours.cyan)
@@ -34,10 +34,10 @@ module.exports.run = async (bot, message, args) => {
         .setTimestamp()
         .setDescription(`⚙ Estes são os comandos disponíveis do bot!\n 🎤 O prefixo do bot é: ${prefix}`)
         .addField(`⌨ Geral :`, " `avatar,botinfo,help,ping,regras,report,roles,serverinfo,userinfo` ")
-        .addField(`🎈 Diversão:`, " `8ball,cat,kiss,hug,dog,fish` ")
-        .addField(`👮 Administrador:`, " `addrole,ban,kick,limpar,mute,removerole,sorteio,votação,reload,` ")
-        .addField(`🔧 Utilitários:`, " `invite,say,suporte,remind,clima` ")
-        .addField(`😈 NSFW:`, " `pussy,ass,anal,gif,hentai,holo` ")
+        .addField(`🎈 Diversão:`, " `8ball,cat,kiss,hug,dog,fish,love,laranjo,anime` ")
+        .addField(`👮 Administrador:`, " `addrole,ban,kick,limpar,mute,removerole,sorteio,votação,reload,votekick,lock,unlock,warn` ")
+        .addField(`🔧 Utilitários:`, " `say,remind,clima,vote` ")
+        .addField(`😈 NSFW:`, " `pussy,ass,anal,gif` ")
         .setFooter("Bot Suporte 2019", bot.user.displayAvatarURL)
         message.channel.send(embed).then(m => m.delete(10000));
         message.author.send(Sembed)

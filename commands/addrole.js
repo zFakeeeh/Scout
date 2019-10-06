@@ -13,7 +13,7 @@ module.exports.run = async (bot, message, args) => {
             let time2 = args[2];
             if(!time2) {
               member2.addRole(muteRole2.id);
-              message.channel.send(member2 + ` Você  setou o cargo ` + muteRole2.name);
+              message.channel.send(message.author.username + ` Você  setou o cargo ` + muteRole2.name);
             }else {
               member2.addRole(muteRole2.id);
               message.channel.send(member2 + ` Você ganhou o cargo: ` + muteRole2.name + ` for: ${ms(ms(time2), {long: true})}`);

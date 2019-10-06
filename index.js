@@ -2,6 +2,7 @@ const Discord = require("discord.js");
 const Enmap = require("enmap");
 const fs = require("fs");
 const client = new Discord.Client();
+const bot = new Discord.Client();
 
 const config = require("./config.json");
 client.config = config;
@@ -27,5 +28,14 @@ fs.readdir("./commands/", (err, files) => {
     client.commands.set(commandName, props);
   });
 });
+client.on("message", async message => {
+  let prefix = config.prefix
+  let nomeuser = message.author
+  let botname = client.user.username
+
+if(message.content.startsWith(`<@${client.user.id}>`)){
+  message.channel.send(`Olá, ${nomeuser} eu sou ${botname} e meu prefix é ${prefix}`)
+ }
+})
 
 client.login(config.token);

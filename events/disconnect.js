@@ -3,5 +3,5 @@ const prefix = require("../botconfig.json")
 
 
 module.exports = bot => {
-    console.log(`you have been disconnected at ${new Date()}.`)
+    console.log(`O Bot foi desconectado por uma falha de internet na hora: ${new Date()}.`)
 }

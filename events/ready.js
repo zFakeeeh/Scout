@@ -6,7 +6,7 @@ module.exports = bot => {
 
 
     let statuses = [
-        `| Meu prefix é ! 🌀`,`| Meu criador é o v¡тσяᵈᶻⁿ#9625 🌌`,`| Meu server de suporte está pronto ! *suporte 🎊`
+        `| Meu prefixo para executar comandos é * `,`| Meu criador é o v¡тσяᵈᶻⁿ#9625 `,`| Utilize *help para ver minha lista de comandos e utilidades!`
     ]
 
     setInterval(function() {

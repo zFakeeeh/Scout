@@ -1,53 +1,41 @@
 const Discord = require("discord.js")
-const botconfig = require("../botconfig.json");
-const colours = require("../colours.json");
-const superagent = require("superagent")
 
+exports.run = (client, message, args) => {
+    async function ban() {
+        let userToBan = message.mentions.members.first();
 
-module.exports.run = async (bot, message, args) => {
+        if (!userToBan) {
+            return message.reply("Mencione um usuário para banir");
+        }
+        if (!userToBan.bannable) {
+            return message.reply("Não posso banir este usuário pois ele possui um cargo maior que o meu")
+        }
 
-   if(!message.member.hasPermission(["BAN_MEMBERS", "ADMINISTRATOR"])) return message.channel.send("| **Você não tem permissão para utilizar este comando!**")
+        if (!args[1]) return message.reply("Digite um motivo")
+        let [...powod] = args.splice(1)
 
-   let banMember = message.mentions.members.first() || message.guild.members.get(args[0]) 
-   if(!banMember) return message.channel.send(" | **Por favor, forneça um usuário para banir!**")
+        await userToBan.send("**Você foi banido do servidor motivo: **" + powod.join(" "))
+            .catch(error => console.log(error))
 
-   let reason = args.slice(1).join(" ");
-   if(!reason) reason = "Nenhuma razão foi dita!"
+        await userToBan.ban(powod)
+            .catch(error => message.reply(`Desculpe, ${message.author} não é possivel o banir devido ao erro: ${error}`));
+        message.reply("**Tomado!**")
 
-   if(!message.guild.me.hasPermission(["BAN_MEMBERS", "ADMINISTRATOR"])) return message.channel.send("| **Eu não tenho permissão para poder banir este usuário**")
-
-   banMember.send(`**🤖 Hey
-
-   🚫 Você foi banido do server: ${message.guild.name}
-   
-   👮 Por: ${message.author.username}
-   
-   💭 Motivo:  ${reason}**`).then(() =>
-   message.guild.ban(banMember, { days: 1, reason: reason})).catch(err => console.log(err))
-
-   message.channel.send(`| **${banMember.user.tag} foi banido deste  servidor**`).then(m => m.delete(5000))
-
-    let embed = new Discord.RichEmbed()
-    .setColor(colours.redlight)
-    .setAuthor(`${message.guild.name} Modlogs`, message.guild.iconURL)
-    .addField("Moderation:", "ban")
-    .addField("Punido por:", banMember.user.username)
-    .addField("Moderador:", message.author.username)
-    .addField("Motivo:", reason)
-    .addField("Data:", message.createdAt.toLocaleString())
+        let banEmbed = new Discord.RichEmbed()
+            .setTitle("Ban")
+            .addField("Usuário", userToBan)
+            .addField("Staff", message.author)
+            .addField("Razão", powod.join(" "))
+            .setColor("#daa520")
     
-        let sChannel = message.guild.channels.find(c => c.name === "modlogs")
-        sChannel.send(embed)
-   
 
+        client.channels.get("630097438002118667").send(banEmbed) //490893453421445151
+    }
 
-
-}
-
-module.exports.config = {
-    name: "ban",
-    description: "Bans a user from the guild!",
-    usage: "-ban",
-    accessableby: "Administrators",
-    aliases: ["banir", "banish", "remove"]
+//Sprawdzenie uprawnień
+    if(message.member.roles.find("name", "Administradores") || message.member.roles.find("name", "Moderadores")){
+        ban();
+    } else {
+        return message.reply("Erro: Você não tem permissão para fazer isto!")
+    }
 }

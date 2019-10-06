@@ -13,10 +13,10 @@ module.exports = async (client, member) => {
 	  },
 	  "fields": [
 		{
-		  "name": "Bem vindo(a)",
-		  "value": "Leia as regras para não tomar KICK/BAN e mantenha um bom relacionamento com o pessoal  "
+		  "name": "Bem vindo(a) ao servidor!",
+		  "value": "Leia as regras para não ser banido ou kickado do server divirta-se  "
 		}
 	  ]
 	};
-	member.guild.channels.find("name","entrada").send({embed});
+	message.author.send(embed)
 }

@@ -10,8 +10,8 @@ module.exports.run = async (bot, message, args) => {
         .setImage(mentionedUser.displayAvatarURL)
         .setColor("00ff00")
         .setTitle("Avatar")
-        .setFooter("User " + message.author.tag)
-        .setDescription("[Link do avatar]("+mentionedUser.displayAvatarURL+")")
+        .setFooter("Usuário " + message.author.tag)
+        .setDescription("[Download do avatar]("+mentionedUser.displayAvatarURL+")")
         .setDescription(`:frame_photo: ${message.author}`);
         
 
