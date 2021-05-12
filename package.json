@@ -26,7 +26,7 @@
     "imdb-api": "^4.0.3",
     "index": "^0.4.0",
     "jimp": "^0.8.4",
-    "mathjs": "^6.2.2",
+    "mathjs": "^7.5.1",
     "moment": "^2.24.0",
     "moment-duration-format": "^2.3.2",
     "node-json-db": "^1.0.1",
